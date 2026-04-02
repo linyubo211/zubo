@@ -23,8 +23,7 @@ if not CONFIG_FILE:
     CONFIG_FILE = os.path.join(BASE_DIR, "iptv_config.json")
 OUTPUT_FILE = os.path.join(BASE_DIR, "IPTV.txt")
 DEFAULT_THIRD_PARTY_URLS = OrderedDict([
-    ("https://raw.githubusercontent.com/kakaxi-1/IPTV/main/iptv.txt", "source1.txt"),
-    ("https://raw.githubusercontent.com/kakaxi-1/zubo/main/IPTV.txt", "source2.txt"),
+    ("https://raw.githubusercontent.com/linyu345/231006/refs/heads/main/py/fofa/IPTV.txt", "source1.txt"),
 ])
 
 HEADERS = {
