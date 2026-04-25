@@ -1,0 +1,45 @@
+name: 一键推送双平台镜像
+
+on:
+  push:
+    branches: [ "main" ] # 监听 main 分支的代码提交
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Docker Buildx # 提高构建效率
+        uses: docker/setup-buildx-action@v3
+
+      # 1. 登录到 GitHub 镜像库 (GHCR)
+      - name: 登录 GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # 2. 登录到 Docker Hub 官网
+      - name: 登录 Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # 3. 构建并同时推送至两个平台
+      - name: 构建并推送镜像
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}:latest
+            hjpwyb/zubo:latest
+            hjpwyb/zubo:${{ github.sha }}
