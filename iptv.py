@@ -25,9 +25,6 @@ OUTPUT_FILE = os.path.join(BASE_DIR, "IPTV.txt")
 DEFAULT_THIRD_PARTY_URLS = OrderedDict([
     ("https://raw.githubusercontent.com/kakaxi-1/IPTV/main/iptv.txt", "source1.txt"),
     ("https://raw.githubusercontent.com/kakaxi-1/zubo/main/IPTV.txt", "source2.txt"),
-    ("https://spider.rer.de5.net/sub?52GQylQw=txt", "source3.txt"),
-    ("https://raw.githubusercontent.com/yubao0235/2026/refs/heads/main/py/fofa/IPTV.txt", "source4.txt"),
-    ("https://raw.githubusercontent.com/yubaomo02/LIVE/refs/heads/main/zubo/zuboall.m3u", "source5.txt"),
 ])
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
